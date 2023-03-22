@@ -20,10 +20,9 @@ public class MesQController {
     private First first;
 
     @GetMapping
-    public void a(@RequestParam("s") String s)throws Exception{
-
-        Mes mes = new Mes(s);
-        first.pushMes(mes);
+    public void a(@RequestParam("s") String s)throws Exception{ // 自行定义错误处理
+        Mes mes = new Mes(s); // 消息实体类, s 可以是任意类型
+        first.pushMes(mes);   // 发送消息
         System.out.println("ok");
     }
 
