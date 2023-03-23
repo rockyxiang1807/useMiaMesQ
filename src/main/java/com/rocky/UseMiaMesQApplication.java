@@ -1,7 +1,7 @@
 package com.rocky;
 
-import com.miaMesQ.First;
-import com.miaMesQ.Second;
+import com.miaMesQ.MesQConsumer;
+import com.miaMesQ.MesQEntrance;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,17 +17,17 @@ import javax.annotation.Resource;
 public class UseMiaMesQApplication {
 
     @Resource
-    private Second second;
+    private MesQConsumer mesQConsumer;
 
     public static void main(String[] args) {
         SpringApplication.run(UseMiaMesQApplication.class, args);
     }
 
     @Bean
-    public First createFirst(){
-        second.setClazz(MesQService.class); // 自己编写的实现类
-        second.setRetry(3); // retry 最大次数
-        return new First(second);
+    public MesQEntrance createFirst(){
+        mesQConsumer.setClazz(MesQService.class); // 自己编写的实现类
+        mesQConsumer.setRetry(3); // retry 最大次数
+        return new MesQEntrance(mesQConsumer);
     }
 
 }
